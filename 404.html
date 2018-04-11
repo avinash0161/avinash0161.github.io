@@ -7,6 +7,8 @@
 
 
 
+  
+
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
@@ -15,28 +17,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.38.1 with theme Tranquilpeak 0.4.3-BETA">
     <title>404 Page not found</title>
-    <meta name="author" content="">
+    <meta name="author" content="Avinash Kumar">
     <meta name="keywords" content="">
 
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="https://avinash0161.github.io/favicon.png">
     
 
     
-    <meta name="description" content="">
-    <meta property="og:description" content="">
+    <meta name="description" content="Hugo tranquilpeak theme demo">
+    <meta property="og:description" content="Hugo tranquilpeak theme demo">
     <meta property="og:type" content="blog">
     <meta property="og:title" content="404 Page not found">
     <meta property="og:url" content="">
-    <meta property="og:site_name" content="My New Hugo Site">
+    <meta property="og:site_name" content="Avinash&#39;s blog">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="My New Hugo Site">
-    <meta name="twitter:description" content="">
+    <meta name="twitter:title" content="Avinash&#39;s blog">
+    <meta name="twitter:description" content="Hugo tranquilpeak theme demo">
     
     
 
     
     
 
+    
+      <meta property="og:image" content="https://avinash0161.github.io/images/profilepic.jpg">
     
 
     
@@ -51,7 +55,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
     
     
-    <link rel="stylesheet" href="/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    <link rel="stylesheet" href="https://avinash0161.github.io/css/tranquilpeak.css" />
     
     
 
@@ -65,7 +69,7 @@
   <article class="post">
     <h1>404 Not Found</h1>
     <p>Sorry, but we couldn't find the page you're looking for.</p>
-    <p>Please head back <a href="/">home</a>.</p>
+    <p>Please head back <a href="https://avinash0161.github.io/">home</a>.</p>
   </article>
 </main>
     
@@ -75,9 +79,25 @@
       <i class="fa fa-remove"></i>
     </div>
     
-    <h4 id="about-card-name"></h4>
+      <img id="about-card-picture" src="https://avinash0161.github.io/images/profilepic.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Avinash Kumar</h4>
+    
+      <div id="about-card-bio">CS PhD student at UC Irvine</div>
     
     
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        avinash DOT kumar AT uci DOT edu
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Irvine, CA
+      </div>
     
   </div>
 </div>
@@ -93,37 +113,73 @@
       <i class="search-icon fa fa-search"></i>
       <form id="algolia-search-form">
         <input type="text" id="algolia-search-input" name="search"
-          class="form-control input--large search-input" placeholder="" />
+          class="form-control input--large search-input" placeholder="Search" />
       </form>
     </div>
     <div class="modal-body">
-      <div class="no-result text-color-light text-center"></div>
+      <div class="no-result text-color-light text-center">no post found</div>
       <div class="results">
         
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://avinash0161.github.io/2018/04/hello-world-of-remote-procedural-call-rpc/">
+                <h3 class="media-heading">Hello World of Remote Procedural Call (RPC)</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">A RPC call is used by client to do execute some function on the server. A basic running example of RPC call in which a client calls the server to do some mathematical tasks is discussed in this blog. To create an RPC program, you first write an IDL file where you define the &lsquo;capability&rsquo; of your server i.e. the functions that it can execute. The program containing the functions in the IDL file are given numbers (IDs and versions).</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
         
       </div>
     </div>
     <div class="modal-footer">
       <p class="results-count text-medium"
-         data-message-zero=""
-         data-message-one=""
-         data-message-other="">
-         0 posts found
+         data-message-zero="no post found"
+         data-message-one="1 post found"
+         data-message-other="{n} posts found">
+         1 posts found
       </p>
     </div>
   </div>
 </div>
     
+  
+    
+    <div id="cover" style="background-image:url('https://avinash0161.github.io/images/cover.jpg');"></div>
+  
+
 
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 
 
-<script src="/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+<script src="https://avinash0161.github.io/js/tranquilpeak.js"></script>
 
 
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
 
 
 
