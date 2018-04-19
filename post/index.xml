@@ -6,17 +6,26 @@
     <description>Recent content in Posts on Avinash&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 09 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://avinash0161.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Hello World of Remote Procedural Call (RPC)</title>
-      <link>https://avinash0161.github.io/2018/04/hello-world-of-remote-procedural-call-rpc/</link>
+      <title>Xac 1 - ACIDity of transactions</title>
+      <link>https://avinash0161.github.io/2018/04/xac-1---acidity-of-transactions/</link>
+      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://avinash0161.github.io/2018/04/xac-1---acidity-of-transactions/</guid>
+      <description>Why do we need transactions in databases? Transactions are needed when a group of DBMS statements together need to do something and either all of them should execute or none should execute. Ex: Consider transfer of funds from one bank account to other. It should never happen that one account was debited but the other one was never credited. So, either the SQL statements of both credit and debit should pass or both should fail.</description>
+    </item>
+    
+    <item>
+      <title>Simple Overview of Remote Procedure Call (RPC)</title>
+      <link>https://avinash0161.github.io/2018/04/simple-overview-of-remote-procedure-call-rpc/</link>
       <pubDate>Mon, 09 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://avinash0161.github.io/2018/04/hello-world-of-remote-procedural-call-rpc/</guid>
+      <guid>https://avinash0161.github.io/2018/04/simple-overview-of-remote-procedure-call-rpc/</guid>
       <description>A RPC call is used by client to do execute some function on the server. A basic running example of RPC call in which a client calls the server to do some mathematical tasks is discussed in this blog. To create an RPC program, you first write an IDL file where you define the &amp;lsquo;capability&amp;rsquo; of your server i.e. the functions that it can execute. The program containing the functions in the IDL file are given numbers (IDs and versions).</description>
     </item>
     

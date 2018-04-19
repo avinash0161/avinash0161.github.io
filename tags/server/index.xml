@@ -12,11 +12,11 @@
     
     
     <item>
-      <title>Hello World of Remote Procedural Call (RPC)</title>
-      <link>https://avinash0161.github.io/2018/04/hello-world-of-remote-procedural-call-rpc/</link>
+      <title>Simple Overview of Remote Procedure Call (RPC)</title>
+      <link>https://avinash0161.github.io/2018/04/simple-overview-of-remote-procedure-call-rpc/</link>
       <pubDate>Mon, 09 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://avinash0161.github.io/2018/04/hello-world-of-remote-procedural-call-rpc/</guid>
+      <guid>https://avinash0161.github.io/2018/04/simple-overview-of-remote-procedure-call-rpc/</guid>
       <description>A RPC call is used by client to do execute some function on the server. A basic running example of RPC call in which a client calls the server to do some mathematical tasks is discussed in this blog. To create an RPC program, you first write an IDL file where you define the &amp;lsquo;capability&amp;rsquo; of your server i.e. the functions that it can execute. The program containing the functions in the IDL file are given numbers (IDs and versions).</description>
     </item>
     

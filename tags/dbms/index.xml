@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dbms on Avinash&#39;s blog</title>
+    <link>https://avinash0161.github.io/tags/dbms/</link>
+    <description>Recent content in Dbms on Avinash&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 12 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://avinash0161.github.io/tags/dbms/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Xac 1 - ACIDity of transactions</title>
+      <link>https://avinash0161.github.io/2018/04/xac-1---acidity-of-transactions/</link>
+      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://avinash0161.github.io/2018/04/xac-1---acidity-of-transactions/</guid>
+      <description>Why do we need transactions in databases? Transactions are needed when a group of DBMS statements together need to do something and either all of them should execute or none should execute. Ex: Consider transfer of funds from one bank account to other. It should never happen that one account was debited but the other one was never credited. So, either the SQL statements of both credit and debit should pass or both should fail.</description>
+    </item>
+    
+  </channel>
+</rss>
