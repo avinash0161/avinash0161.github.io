@@ -252,7 +252,7 @@
 
 <p>This is taken care of by the next two properties of transactions - <strong>consistency and isolation</strong>.</p>
 
-<p><strong>Consistency</strong> property mandates that a transaction should be such that if the database was consistent at the beginning of the transaction, it will be consistent after the transaction. The definition of consistency varies within DBMS systems and is often user defined. However, right now, you can think of consistency as not violating any logical constraints. However, transactions overlap and are concurrent. So, a transaction which would have left the database in a consistent state after it was over may not do so  because the data it was accessing was meddled with, by some other transaction executing concurrently. Here, comes the importance of <strong>isolation</strong> (also known as serializability) which says that concurrent execution of transactions should leave the system in a state which is equivalent to some serial execution order of the transactions. If isolation is guaranteed, we know that there exists a serial order of execution of transactions which results in the current database state. This coupled with the consistency property assures that a database which starts in a consistent state will end in a consistent state, no matter how many transactions take place. In other words, isolation can also mean that intermediate state of database during a transaction isn&rsquo;t visible to other transactions (This visibility property doesn&rsquo;t hold for multi-level transactions, but is taken care of by the concurrency control mechanisms). Providing isolation is one of the goals of concurrency control in the databases.</p>
+<p><strong>Consistency</strong> property mandates that a transaction should be such that if the database was consistent at the beginning of the transaction, it will be consistent after the transaction. The definition of consistency varies within DBMS systems and is often user defined. However, right now, you can think of consistency as not violating any logical constraints. However, transactions overlap and are concurrent. So, a transaction which would have left the database in a consistent state after it was over may not do so  because the data it was accessing was meddled with, by some other transaction executing concurrently. Here, comes the importance of <strong>isolation</strong> (also known as serializability) which says that concurrent execution of transactions should leave the system in a state which is <em>equivalent</em> to some serial execution order of the transactions (How to check if a schedule is equivalent to some serial schedule is an obvious question and is the foundation of the <a href="https://avinash0161.github.io/2018/04/xac-2---serializability-of-transactions/" title="next blog on serializability">next blog on serializability</a>). If isolation is guaranteed, we know that there exists a serial order of execution of transactions which results in the current database state. This coupled with the consistency property assures that a database which starts in a consistent state will end in a consistent state, no matter how many transactions take place. In other words, isolation can also mean that intermediate state of database during a transaction isn&rsquo;t visible to other transactions (This visibility property doesn&rsquo;t hold for multi-level transactions, but is taken care of by the concurrency control mechanisms). Providing isolation is one of the goals of concurrency control in the databases.</p>
 
 <p>Lastly, the property of <strong>Durability</strong> says that if a transaction commits, its changes become permanent and will be so even in the event of power loss, crashes etc. Together these are known as the ACID properties of the transactions.</p>
 
@@ -282,7 +282,7 @@
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://avinash0161.github.io/2018/04/xac-2---serializability-of-transactions/" data-tooltip="Xac 2 - Serializability of Transactions">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -368,7 +368,7 @@
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://avinash0161.github.io/2018/04/xac-2---serializability-of-transactions/" data-tooltip="Xac 2 - Serializability of Transactions">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -509,6 +509,23 @@
           <div class="media">
             
             <div class="media-body">
+              <a class="link-unstyled" href="https://avinash0161.github.io/2018/04/xac-2---serializability-of-transactions/">
+                <h3 class="media-heading">Xac 2 - Serializability of Transactions</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">In the previous blog, we talked about ACID properties of transactions and how it allows us to maintain a consistent state even though transactions execute concurrently. It was said that if the concurrent execution of transactions are equivalent to some serial execution, then the isolation property of transactions is satisfied and consistency is ensured. HOWEVER, HOW DOES A DBMS ENSURE THAT A CONCURRENT EXECUTION OF TRANSACTIONS IS EQUIVALENT TO SOME SERIAL SCHEDULE OF TRANSACTIONS?</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
               <a class="link-unstyled" href="https://avinash0161.github.io/2018/04/xac-1---acidity-of-transactions/">
                 <h3 class="media-heading">Xac 1 - ACIDity of transactions</h3>
               </a>
@@ -547,7 +564,7 @@
          data-message-zero="no post found"
          data-message-one="1 post found"
          data-message-other="{n} posts found">
-         2 posts found
+         3 posts found
       </p>
     </div>
   </div>

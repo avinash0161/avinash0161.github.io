@@ -20,7 +20,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.38.1 with theme Tranquilpeak 0.4.3-BETA">
-    <title>Simple Overview of Remote Procedure Call (RPC)</title>
+    <title>Xac 2 - Serializability of Transactions</title>
     <meta name="author" content="Avinash Kumar">
     <meta name="keywords" content="">
 
@@ -28,15 +28,15 @@
     
 
     
-    <meta name="description" content="A RPC call is used by client to do execute some function on the server. A basic running example of RPC call in which a client calls the server to do some mathematical tasks is discussed in this blog. To create an RPC program, you first write an IDL file where you define the &lsquo;capability&rsquo; of your server i.e. the functions that it can execute. The program containing the functions in the IDL file are given numbers (IDs and versions).">
-    <meta property="og:description" content="A RPC call is used by client to do execute some function on the server. A basic running example of RPC call in which a client calls the server to do some mathematical tasks is discussed in this blog. To create an RPC program, you first write an IDL file where you define the &lsquo;capability&rsquo; of your server i.e. the functions that it can execute. The program containing the functions in the IDL file are given numbers (IDs and versions).">
+    <meta name="description" content="In the previous blog, we talked about ACID properties of transactions and how it allows us to maintain a consistent state even though transactions execute concurrently. It was said that if the concurrent execution of transactions are equivalent to some serial execution, then the isolation property of transactions is satisfied and consistency is ensured. HOWEVER, HOW DOES A DBMS ENSURE THAT A CONCURRENT EXECUTION OF TRANSACTIONS IS EQUIVALENT TO SOME SERIAL SCHEDULE OF TRANSACTIONS?">
+    <meta property="og:description" content="In the previous blog, we talked about ACID properties of transactions and how it allows us to maintain a consistent state even though transactions execute concurrently. It was said that if the concurrent execution of transactions are equivalent to some serial execution, then the isolation property of transactions is satisfied and consistency is ensured. HOWEVER, HOW DOES A DBMS ENSURE THAT A CONCURRENT EXECUTION OF TRANSACTIONS IS EQUIVALENT TO SOME SERIAL SCHEDULE OF TRANSACTIONS?">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Simple Overview of Remote Procedure Call (RPC)">
-    <meta property="og:url" content="/2018/04/simple-overview-of-remote-procedure-call-rpc/">
+    <meta property="og:title" content="Xac 2 - Serializability of Transactions">
+    <meta property="og:url" content="/2018/04/xac-2---serializability-of-transactions/">
     <meta property="og:site_name" content="Avinash&#39;s blog">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Avinash&#39;s blog">
-    <meta name="twitter:description" content="A RPC call is used by client to do execute some function on the server. A basic running example of RPC call in which a client calls the server to do some mathematical tasks is discussed in this blog. To create an RPC program, you first write an IDL file where you define the &lsquo;capability&rsquo; of your server i.e. the functions that it can execute. The program containing the functions in the IDL file are given numbers (IDs and versions).">
+    <meta name="twitter:description" content="In the previous blog, we talked about ACID properties of transactions and how it allows us to maintain a consistent state even though transactions execute concurrently. It was said that if the concurrent execution of transactions are equivalent to some serial execution, then the isolation property of transactions is satisfied and consistency is ensured. HOWEVER, HOW DOES A DBMS ENSURE THAT A CONCURRENT EXECUTION OF TRANSACTIONS IS EQUIVALENT TO SOME SERIAL SCHEDULE OF TRANSACTIONS?">
     
     
 
@@ -211,15 +211,15 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Simple Overview of Remote Procedure Call (RPC)
+      Xac 2 - Serializability of Transactions
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2018-04-09T00:00:00Z">
+      <time itemprop="datePublished" datetime="2018-04-18T00:00:00Z">
         
-  April 9, 2018
+  April 18, 2018
 
       </time>
     
@@ -228,7 +228,7 @@
   
     <span>in</span>
     
-      <a class="category-link" href="https://avinash0161.github.io/categories/client-server">Client-Server</a>
+      <a class="category-link" href="https://avinash0161.github.io/categories/transactions">transactions</a>
     
   
 
@@ -238,22 +238,38 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>A RPC call is used by client to do execute some function on the server. A basic running example of RPC call in which a client calls the server to do some mathematical tasks is discussed in <a href="http://tharikasblogs.blogspot.com/p/how-to-write-simple-rpc-programme.html" title="this">this</a> blog. To create an RPC program, you first write an IDL file where you define the &lsquo;capability&rsquo; of your server i.e. the functions that it can execute. The program containing the functions in the IDL file are given numbers (IDs and versions). These numbers are used by the client part of RPC to convey which program is to be executed. Once the IDL is made <code>rpcgen</code> command is used to generate the other parts of the code specifically the IDL_server.c which has the server template code and IDL_client.c which has the client template code. These can be modified as desired. Two more files which are necessary and are generated by the rpcgen command are the client stub and the server stub. These are basically C files which mock the existence of procedures. When the makefile is run, client and server files are linked with their stubs and IDL.h and other RPC libraries to form the respective client and server executables.</p>
+              
 
-<p>The server can be run as a normal C program and the client while being executed is to provide the location of where the server program is located. In the blog, this is given as localhost. As both of them import <code>rpc.h</code> in their source files, they leverage RPC libraries to make the procedural call successful.</p>
+<p>In the <a href="https://avinash0161.github.io/2018/04/xac-1---acidity-of-transactions/" title="previous blog">previous blog</a>, we talked about ACID properties of transactions and how it allows us to maintain a consistent state even though transactions execute concurrently. It was said that if the concurrent execution of transactions are equivalent to some serial execution, then the isolation property of transactions is satisfied and consistency is ensured. HOWEVER, HOW DOES A DBMS ENSURE THAT A CONCURRENT EXECUTION OF TRANSACTIONS IS EQUIVALENT TO SOME SERIAL SCHEDULE OF TRANSACTIONS?</p>
 
-<p>On a high level, this is what happens which makes RPC call possible:
-When client calls the procedure:
-1. The call goes to the client stub which retrieves the function parameters.
-2. The parameter are then converted into some standard format for transmission over the network.
-3. RPC library&rsquo;s function is called to send the request to server. Note that this request also has the id to uniquely identify the procedure.</p>
+<p>So, there are some theoretical concepts regarding this. Before that, we define the term schedule as some order (may be interleaved) of execution of transactions. Transactions which actually are DBMS statements can be viewed at micro-level as just reads and writes. So, if <code>T1 ( r1(x), w1(y))</code> and <code>T2 (r2(z), w2(y))</code> are two transactions, then <code>r1(x), r2(z), w2(y), w1(y)</code> is one schedule and <code>r1(x), w1(y), r2(z), w2(y)</code> is another possible schedule (the latter schedule is also serial). There are many more schedules possible.</p>
 
-<p>For server, the main() function is in its stub. When the server executable is run, the server program registers itself with the RPC runtime.
-1. The server RPC runtime receives the request from client and gets the parameters. According to the id carried in the request, the server stub is called.
-2. Server stub converts parameters to the format which the code recognises.
-3. The actual procedure is called.</p>
+<h3 id="equivalence-detection">Equivalence detection</h3>
 
-<p>Something similar to the above steps is done to send the results to the client. On a high level, this is the procedure followed by the RPC mechanisms. <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa373935%28v%3Dvs.85%29.aspx">This Microsoft doc</a> also explains the entire process.</p>
+<p>There exists different types of equivalence definitions which lead to different types of serializability. Some equivalence definitions are flawed and thus even though according to the definition, the schedule is equivalent to a serial schedule, in reality it is not, and following schedules allowed by such equivalence definitions may lead to inconsistent database. We discuss three types of equivalences: -
+- <strong>Final State Equivalence (FSE) or result equivalence</strong>: Two schedules are equivalent if at the end of both the state of database is same and the path to arrive at that state is also the same. However, this only means that the final write and the way to get there is checked. If the intermediate reads who have no role in final writes return inconsistent results, FSE will still approve the schedule as final state serializable. For eg: consider the schedule <code>r2(x) w2(x) r1(x) r1(y) r2(y) w2(y) c1 c2</code>. This is said to be FSE to both T1 T2 and T2 T1. However, the Select statements (i.e. r1(x) r1(y)) return different results in all the three cases (two serialized and the original schedule). The graphical method to find FSE is descibed in <a href="http://www.inf.uni-konstanz.de/dbis/teaching/ss05/txs/ch3.pdf" title="this lecture slide">this lecture slide</a>.
+- <strong>View Equivalence (VSE)</strong>: Two schedules are view equivalent if
+    1. The first reads of data items in both schedules are done by same transactions. i.e. if Ti reads data item x in schedule 1, the same should happen in the second schedule.
+    2. The final writes of all data items should be done by the same transactions.
+    3. The producer-consumer pattern should be followed i.e. if a Ti reads value written by Tj in first schedule, the same should happen in the second schedule too.</p>
+
+<pre><code>So, at every step, view equivalence ensures that the view to all transactions are same in both the schedules. More details are given in [this youtube video](https://www.youtube.com/watch?v=NWmhKcjAoNI &quot;this youtube video&quot;) by Techtud. View equivalence guarantees consistency. However, finding all the serial order of executions and checking them for serializability, is time taking. Therefore, we have a stricter version of equivalence called conflict equivalence.
+</code></pre>
+
+<ul>
+<li><strong>Conflict Equivalence</strong>: Two operations are conflicting if they are on the same data item and at leat one of them is a write. We lay out all the transactions in the given schedules and form a dependency graph for both. If the graphs are the same, then they are conflict equivalent. For a schedule to be conflict serializable, its dependency graph shouldn&rsquo;t have any cycles. This is because a serial schedule can&rsquo;t have cycles in its dependency graph. More details are given in <a href="https://www.youtube.com/watch?v=UJw0ElBBNiU" title="this youtube video">this youtube video</a> by Techtud.
+So, in order to check if a schedule is conflict serializable, the DBMS has to just make dependence graph and check that there are no cycles.</li>
+</ul>
+
+<p>An important thing to note is that if two schedules are view equivalent but not conflict equivalent then it must be due to the presence of blind writes. An example of blind write is given in this <a href="https://dba.stackexchange.com/questions/115435/what-is-meant-by-a-blind-write-in-a-schedule" title="Stack Exchange post">Stack Exchange post</a>.</p>
+
+<h3 id="similarity-to-parallel-computing">Similarity to Parallel Computing</h3>
+
+<p>If one notes, the attempt to use only serializable schedules to maintain consistency is akin to usage of locks in parallel computing. In parallel computing, the low level details are exposed to the developers, and they themselves have to use locks to maintain consistency and avoid race conditions. A benefit there is that given that kind of low level access, developers can obtain high concurrency. In contrast, the concurrency control manager of DBMS abstracts the low level lock usage (which can get murky in complex cases) and attempts to implement locking mechanism by itself which fits all purposes and doesn&rsquo;t challenge consistency. Mechanisms such as 2 phase locking schemes are methods to do just that. 2 phase locking and other concurrency control schemes are formulated in a way that they are stricter than even conflict serializability i.e. even a conflict serializable schedule wouldn&rsquo;t be approved by 2-phase locking schemes. Obviously, this attempt to build a  general solution which fits all cases, has its toll on the concurrency that the DBMS can provide.</p>
+
+<h3 id="final-thoughts">Final Thoughts</h3>
+
+<p>What we have seen in this blog is how to check for serializability. However, the DBMS system just gets a stream of reads and writes from different transactions. How does it implement serializability is discussed in <a href="https://avinash0161.github.io/2018/04/xac-4---ensuring-only-serializable-schedules-pass-through/" title="another post">another post</a>.</p>
 
               
             </div>
@@ -266,9 +282,9 @@ When client calls the procedure:
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://avinash0161.github.io/tags/rpc/">RPC</a>
+  <a class="tag tag--primary tag--small" href="https://avinash0161.github.io/tags/dbms/">DBMS</a>
 
-  <a class="tag tag--primary tag--small" href="https://avinash0161.github.io/tags/server/">Server</a>
+  <a class="tag tag--primary tag--small" href="https://avinash0161.github.io/tags/transactions/">Transactions</a>
 
                   </div>
                 
@@ -281,7 +297,7 @@ When client calls the procedure:
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://avinash0161.github.io/2018/04/xac-1---acidity-of-transactions/" data-tooltip="Xac 1 - ACIDity of transactions">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -289,7 +305,7 @@ When client calls the procedure:
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://avinash0161.github.io/2018/04/xac-1---acidity-of-transactions/" data-tooltip="Xac 1 - ACIDity of transactions">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -307,19 +323,19 @@ When client calls the procedure:
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://avinash0161.github.io/2018/04/simple-overview-of-remote-procedure-call-rpc/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://avinash0161.github.io/2018/04/xac-2---serializability-of-transactions/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://avinash0161.github.io/2018/04/simple-overview-of-remote-procedure-call-rpc/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://avinash0161.github.io/2018/04/xac-2---serializability-of-transactions/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://avinash0161.github.io/2018/04/simple-overview-of-remote-procedure-call-rpc/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://avinash0161.github.io/2018/04/xac-2---serializability-of-transactions/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -367,7 +383,7 @@ When client calls the procedure:
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://avinash0161.github.io/2018/04/xac-1---acidity-of-transactions/" data-tooltip="Xac 1 - ACIDity of transactions">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -375,7 +391,7 @@ When client calls the procedure:
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://avinash0161.github.io/2018/04/xac-1---acidity-of-transactions/" data-tooltip="Xac 1 - ACIDity of transactions">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -393,19 +409,19 @@ When client calls the procedure:
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://avinash0161.github.io/2018/04/simple-overview-of-remote-procedure-call-rpc/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://avinash0161.github.io/2018/04/xac-2---serializability-of-transactions/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://avinash0161.github.io/2018/04/simple-overview-of-remote-procedure-call-rpc/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://avinash0161.github.io/2018/04/xac-2---serializability-of-transactions/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://avinash0161.github.io/2018/04/simple-overview-of-remote-procedure-call-rpc/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://avinash0161.github.io/2018/04/xac-2---serializability-of-transactions/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -435,19 +451,19 @@ When client calls the procedure:
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Favinash0161.github.io%2F2018%2F04%2Fsimple-overview-of-remote-procedure-call-rpc%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Favinash0161.github.io%2F2018%2F04%2Fxac-2---serializability-of-transactions%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Favinash0161.github.io%2F2018%2F04%2Fsimple-overview-of-remote-procedure-call-rpc%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Favinash0161.github.io%2F2018%2F04%2Fxac-2---serializability-of-transactions%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Favinash0161.github.io%2F2018%2F04%2Fsimple-overview-of-remote-procedure-call-rpc%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Favinash0161.github.io%2F2018%2F04%2Fxac-2---serializability-of-transactions%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
@@ -604,9 +620,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/avinash0161.github.io\/2018\/04\/simple-overview-of-remote-procedure-call-rpc\/';
+          this.page.url = 'https:\/\/avinash0161.github.io\/2018\/04\/xac-2---serializability-of-transactions\/';
           
-            this.page.identifier = '\/2018\/04\/simple-overview-of-remote-procedure-call-rpc\/'
+            this.page.identifier = '\/2018\/04\/xac-2---serializability-of-transactions\/'
           
         };
         (function() {
