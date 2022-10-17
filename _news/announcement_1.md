@@ -1,7 +1,7 @@
 ---
 layout: post
-date: 2015-10-22 15:59:00-0400
+date: 2021-04-22
 inline: true
 ---
 
-A simple inline announcement.
+I was one of the finalist for 2021 Facebook Fellowship awards in the area of Database systems.
