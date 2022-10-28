@@ -12,6 +12,8 @@ profile:
 
 news: true  # includes a list of news items
 selected_papers: false # includes a list of papers marked as "selected={true}"
+experience: true # list all the full-time companies
+internships: true # list all the internship companies
 social: true  # includes social icons at the bottom of the page
 ---
 
@@ -21,4 +23,4 @@ social: true  # includes social icons at the bottom of the page
 
 I am a Computer Science PhD student in University of California, Irvine, under the supervision of [Prof. Chen Li](https://chenli.ics.uci.edu/). My research is in the field of databases and scalable data processing systems. I work on the [Texera service](https://github.com/Texera/texera) and the [Amber engine](http://www.vldb.org/pvldb/vol13/p740-kumar.pdf) that powers it.
 
-I completed Bachelors and Masters in Computer Science and Engineering from IIT Roorkee in 2015. Thereafter, I worked at Microsoft for two years on Office for Android and the Kaizala product. I joined UCI for my PhD in 2017.
+I completed Bachelors and Masters in Computer Science and Engineering from IIT Roorkee. Thereafter, I worked at Microsoft for two years on Office for Android and the Kaizala product, before joining UCI to pursue PhD.

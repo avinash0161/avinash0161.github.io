@@ -40,6 +40,42 @@ layout: default
             {{ content }}
           </div>
 
+          {% if page.experience -%}
+            <!-- Full time companies -->
+            <br>
+            <h2>Industry full time</h2>
+            <div class="gallery">
+              <figure class="gallery__item gallery__item--1">
+                <img src="assets/img/microsoft-logo.png" class="gallery__img" alt="Microsoft">
+                <p><center><b>Microsoft (2015-17)</b></center></p>
+              </figure>
+            </div>
+          {%- endif %}
+          {% if page.internships -%}
+            <!-- Internship companies -->
+            <br>
+            <h2>Internships</h2>
+            <div class="gallery">
+              <figure class="gallery__item gallery__item--1">
+                <img src="assets/img/microsoft-logo.png" class="gallery__img" alt="Microsoft">
+              </figure>
+              <figure class="gallery__item gallery__item--2">
+                <img src="assets/img/salesforce-logo.png" class="gallery__img" alt="Salesforce">
+              </figure>
+              <figure class="gallery__item gallery__item--3">
+                <img src="assets/img/meta-logo.png" class="gallery__img" alt="Meta">
+              </figure>
+              <figure class="gallery__item gallery__item--4">
+                <img src="assets/img/google-logo.png" class="gallery__img" alt="Google">
+              </figure>
+              <p class="gallery__item gallery__item--5"><center><b>Microsoft (2014)</b></center></p>
+              <p class="gallery__item gallery__item--6"><center><b>Salesforce (2019)</b></center></p>
+              <p class="gallery__item gallery__item--7"><center><b>Meta (2020)</b></center></p>
+              <p class="gallery__item gallery__item--8"><center><b>Google (2021)</b></center></p>
+            </div>
+            <br>
+          {%- endif %}
+
           {% if page.news -%}
           <!-- News -->
           {%- include news.html %}
