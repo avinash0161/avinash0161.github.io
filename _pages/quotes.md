@@ -1,7 +1,7 @@
 ---
 layout: quotes
 permalink: /quotes/
-title: Quotes
+title: quotes
 nav: true
 nav_order: 4
 ---
