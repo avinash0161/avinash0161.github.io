@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: PhD student, Computer Science, UC Irvine
+subtitle: PhD, Computer Science, UC Irvine
 
 profile:
   align: right
@@ -17,10 +17,10 @@ internships: true # list all the internship companies
 social: true  # includes social icons at the bottom of the page
 ---
 
-> I have become my own version of an optimist. If I can’t make it through one door, I’ll go through another door – or I’ll make a door. Something terrific will come no matter how dark the present.
+> Have no fear of perfection; you'll never reach it.
 >
-> -*Rabindranath Tagore*
+> -*Marie Curie*
 
-I am a Computer Science PhD student in University of California, Irvine, under the supervision of [Prof. Chen Li](https://chenli.ics.uci.edu/). My research is in the field of databases and scalable data processing systems. I work on the [Texera service](https://github.com/Texera/texera) and the [Amber engine](http://www.vldb.org/pvldb/vol13/p740-kumar.pdf) that powers it.
+I did my PhD in Computer Science from University of California, Irvine, under the supervision of [Prof. Chen Li](https://chenli.ics.uci.edu/). My doctoral research was in the field of databases and scalable data processing systems. I worked on the [Texera service](https://github.com/Texera/texera) and the [Amber engine](http://www.vldb.org/pvldb/vol13/p740-kumar.pdf) that powers it.
 
 I completed Bachelors and Masters in Computer Science and Engineering from IIT Roorkee. Thereafter, I worked at Microsoft for two years on Office for Android and the Kaizala product, before joining UCI to pursue PhD.

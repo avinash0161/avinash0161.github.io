@@ -27,6 +27,10 @@
 - title: Experience
   type: time_table
   contents:
+    - title: Software Development Engineer
+      institution: Google
+      year: Since Jan 2023
+      description: F1 Query Engine team (Core Data Infrastructure) 
     - title: PhD Intern
       institution: Google
       year: 2021
